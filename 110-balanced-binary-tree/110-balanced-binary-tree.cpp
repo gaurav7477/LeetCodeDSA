@@ -11,35 +11,75 @@
  */
 class Solution {
 public:
-    int height(TreeNode* node){
-        if(node == NULL){
-            return 0;
-        }
+    // n^2 time complexity
+//     int height(TreeNode* node){
+//         if(node == NULL){
+//             return 0;
+//         }
         
-        int left = height(node->left);
-        int right = height(node->right);
+//         int left = height(node->left);
+//         int right = height(node->right);
         
-        int ans = max(left,right) + 1;
-        return ans;
-    }
+//         int ans = max(left,right) + 1;
+//         return ans;
+//     }
     
     
-    bool isBalanced(TreeNode* root) {
+    
+//     bool isBalanced(TreeNode* root) {
+//         if(root == NULL){
+//             return true;
+//         }
+        
+//         bool left = isBalanced(root->left);
+//         bool right = isBalanced(root->right);
+        
+//         bool diff = abs(height(root->left) - height(root->right)) <= 1;
+        
+//         if(left && right && diff){
+//             return true;
+//         }
+//         else{
+//             return false;
+//         }
+//     }
+
+    
+    
+    
+    
+    pair<bool,int> isBalancedfast(TreeNode* root) {
         if(root == NULL){
-            return true;
+            pair<bool,int>p = make_pair(true,0);
+            return p;
         }
         
-        bool left = isBalanced(root->left);
-        bool right = isBalanced(root->right);
+        pair<bool,int> left = isBalancedfast(root->left);
+        pair<bool,int> right = isBalancedfast(root->right);
+          
+        bool left_ans = left.first;
+        bool right_ans = right.first;
+        bool diff = abs(left.second - right.second) <= 1;
         
-        bool diff = abs(height(root->left) - height(root->right)) <= 1;
+        pair<bool,int>ans;
+        ans.second = max(left.second,right.second) + 1;
         
-        if(left && right && diff){
-            return true;
+        if(left_ans && right_ans && diff){
+            ans.first = true;
+           
         }
         else{
-            return false;
+            ans.first = false;
+           
         }
+         return ans;
     }
-
+    
+    
+    
+        bool isBalanced(TreeNode* root) {
+        
+            return isBalancedfast(root).first;
+            
+    }
 };
