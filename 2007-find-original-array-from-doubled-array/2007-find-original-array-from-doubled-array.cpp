@@ -5,7 +5,7 @@ public:
         if (n % 2 == 1) return {};
         sort(changed.begin(), changed.end());
         vector<int> ans;
-        map<int, int> mp;
+        unordered_map<int, int> mp;
         for (int i = 0; i < n; i++) {
             mp[changed[i]]++;
             
