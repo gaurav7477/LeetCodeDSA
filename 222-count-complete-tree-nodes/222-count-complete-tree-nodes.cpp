@@ -38,9 +38,7 @@ public:
                 }
                 // cout<<temp->val<<" ";
                 
-                if(temp->val == 0 || temp->val != 0){
-                    count++;
-                }
+                count++;
             }
         //     // cout<<level.size();
         // ans.push_back(level);
