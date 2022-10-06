@@ -11,22 +11,22 @@
  */
 class Solution {
 public:
-    vector<int>v;
-    void inorder(TreeNode* root,vector<int> &v){
-        if(root == NULL) return;
-        inorder(root->left,v);
-        v.push_back(root->val);
-        inorder(root->right,v);
+    bool validBstByRange(TreeNode* root,long long min,long long max){
+        // base case
+        if(root == NULL) return true;
         
+        if(root->val > min && root->val < max){
+            bool left = validBstByRange(root->left,min,root->val);
+            bool right = validBstByRange(root->right,root->val,max);
+            return left && right;
+        }
+        else{
+            return false;
+        }
     }
     bool isValidBST(TreeNode* root) {
-        inorder(root,v);
-        bool flag = true;
-        for(int i =1; i < v.size();i++){
-            // cout<<v[i+1]<<" ";
-            if(v[i] <=  v[i-1]) return false;
-            else continue;
-        }
-        return flag;
+        long long min = LONG_MIN;
+        long long max = LONG_MAX;
+        return validBstByRange(root,min,max);
     }
 };
