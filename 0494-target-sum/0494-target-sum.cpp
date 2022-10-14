@@ -19,7 +19,7 @@ public:
             }
         }
         for(int i=1;i<n+1;i++) {
-		   //We have to start column from 0 because in this problem we have solve problem if the array contains only 0 .Example; array=[0,0,0,0] and target=0 ,then output would give 16.
+		   //We have to start column from 0 because in this problem we have solve problem if the array              contains only 0 .Example; array=[0,0,0,0] and target=0 ,then output would give 16.
             for(int j=0;j<remain+1;j++) {
                 if(nums[i-1]<=j) 
                     t[i][j]=t[i-1][j-nums[i-1]] + t[i-1][j];
