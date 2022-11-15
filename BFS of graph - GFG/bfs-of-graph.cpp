@@ -10,18 +10,17 @@ class Solution {
         int vis[V] = {0};
         vis[0] = 1;
         
-        queue<int>q;
-        q.push(0);
+        queue<int>pq;
+        pq.push(0);
         vector<int>bfs;
-        while(!q.empty()){
-            int node = q.front();
-            q.pop();
+        while(!pq.empty()){
+            int node = pq.front();
+            pq.pop();
             bfs.push_back(node);
-            
-            for(auto it : adj[node]){
+            for(auto  it : adj[node]){
                 if(!vis[it]){
                     vis[it] = 1;
-                    q.push(it);
+                    pq.push(it);
                 }
             }
         }
