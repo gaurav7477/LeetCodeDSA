@@ -3,24 +3,32 @@ public:
 
     int lengthOfLongestSubstring(string s) 
     {
-        unordered_set<char> set;
+        unordered_map<char,int> mp;
     
-        int i = 0, j = 0, n = s.size(), ans = 0;
-    
-        while( i<n && j<n)
+        int i = 0, j = 0, n = s.size();
+        int mx = INT_MIN;
+        if(n == 0) return 0;
+        while( j < n)
         {
-            if(set.find(s[j]) == set.end()) //If the character does not in the set
+            mp[s[j]]++;
+            if(mp.size() == j-i+1)
             {
-                set.insert(s[j++]); 
-                ans = max(ans, j-i);                                     
+                mx = max(mx,j-i+1);
+                j++;                                   ;
             }
             else
             {
-                set.erase(s[i++]); 
-                                  
+                while(mp.size() < j-i+1){
+                    mp[s[i]]--;
+                    if(mp[s[i]] == 0){
+                        mp.erase(s[i]);
+                    }
+                    i++; 
+                }
+                j++;                 
             }
         }
     
-        return ans;
+        return mx;
     }
 };
