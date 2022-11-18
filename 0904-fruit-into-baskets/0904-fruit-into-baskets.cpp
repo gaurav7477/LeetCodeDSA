@@ -6,7 +6,7 @@ public:
         
         
         
-        int mx=1;
+        int mx=0;
         int k = 2;
         
         while(j<fruits.size()){
@@ -26,8 +26,6 @@ public:
                     
                     i++;
                 }
-                // mx=max(mx, j-i+1);
-                
                 j++;
             }
         }
