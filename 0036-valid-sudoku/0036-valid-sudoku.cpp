@@ -14,10 +14,14 @@ public:
         }
         
          // check for 3*3 matrix
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
-                if(board[row/3*3 + i][col/3*3 + j] == num)
-                    return false;
+        int grid_row = (row/3)*3;
+        int grid_col = (col/3)*3;
+        for(int x=grid_row;x<grid_row+3;x++){
+            for(int y = grid_col;y<grid_col+3;y++){
+                   if(board[x][y]==num){
+                        return false;
+                }
+                
             }
         }
         board[row][col] = num;
