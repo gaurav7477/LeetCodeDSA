@@ -25,18 +25,25 @@ int main()
 
 int missingNumber(int A[], int N)
 {
-    unordered_map<int,int>mp;
+    // unordered_map<int,int>mp;
     
-    for(int i = 0; i < N;i++){
-        mp[A[i]]++;
+    // for(int i = 0; i < N;i++){
+    //     mp[A[i]]++;
+    // }
+    // for(int i = 1; i <= N;i++){
+    //     if(mp.find(i) == mp.end()){
+    //         return i;
+    //     }
+    //     else{
+    //         continue;
+    //     }
+    // }
+    int sum1 = 0;
+    
+    int sum2 = (N * (N + 1)) / 2;
+    for(int j = 0; j < N-1;j++){
+        sum1 += A[j];
     }
-    for(int i = 1; i <= N;i++){
-        if(mp.find(i) == mp.end()){
-            return i;
-        }
-        else{
-            continue;
-        }
-    }
+    return sum2-sum1;
     
 }
